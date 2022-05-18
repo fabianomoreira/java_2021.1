@@ -9,9 +9,9 @@ public class Zoologico {
 		p2 = new Pelicano();
 		
 		p1.setCor("branco");
-		p1.peso = 30;
+		p1.setPeso(30);
 		p2.setCor("preta");
-		p2.peso = 30;
+		p2.setPeso(30);
 		
 		p1.voar();
 		p2.comer();

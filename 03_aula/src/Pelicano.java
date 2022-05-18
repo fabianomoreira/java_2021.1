@@ -1,4 +1,4 @@
-package zoologico;
+
 
 public class Pelicano {
 	private boolean bico;
