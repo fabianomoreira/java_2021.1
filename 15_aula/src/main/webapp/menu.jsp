@@ -5,8 +5,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Menu</title>
+	<meta charset="ISO-8859-1">
+	<title>Menu</title>
+	
+	<script>
+		function confirmarExclusao(id){
+			var resposta = confirm("Confirma a exclusão do registro?");
+			
+			if(resposta == true){
+				window.location.href = "ExcluirUsuarioServlet?id=" + id;
+			}
+		}
+	</script>
 </head>
 <body>
 	<%String nome = (String)session.getAttribute("usuarioSession"); %>
@@ -43,10 +53,10 @@
 						<%=usuario.getUsuario() %>
 					</td>
 					<td>
-						<img src="images/edit.png" width="24px"/>
+						<a href="alterar.jsp?id=<%=usuario.getId()%>"><img src="images/edit.png" width="24px"/></a>
 					</td>
 					<td>
-						<a href="ExcluirUsuarioServlet?id=<%=usuario.getId()%>"><img src="images/delete.png" width="24px"/></a>
+						<img src="images/delete.png" width="24px" onclick="confirmarExclusao(<%=usuario.getId()%>)"/>
 					</td>
 				</tr>
 			<%
@@ -56,6 +66,7 @@
 		<div>
 			<nav>
 				<ul>
+					<li><a href="cadastrar.jsp">Incluir Usuário</a></li>
 					<li><a href="index.html">Logout</a></li>
 				</ul>
 			</nav>
