@@ -1,0 +1,43 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page import = "modelo.TipoUsuario" %>
+<%@ page import = "java.util.List" %>
+<%@ page import = "java.util.ArrayList" %>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Tela de inclusão</title>
+</head>
+<body>
+	<div>
+		<%
+			List<TipoUsuario> lista;
+		
+			lista = (ArrayList<TipoUsuario>)session.getAttribute("tipoUsuario");
+		%>
+		<form action="IncluirUsuarioServlet" method="post">
+			<label>Nome : </label>
+			<input type="text" name="nome" id="nome" placeholder="Nome do Usuário" size="40"/><br>
+			<label>Usuário:</label>
+			<input type="text" name="usuario" id="usuario" placeholder="Login para o usuário" size="20"/><br>
+			<label>Senha:</label>
+			<input type="password" name="senha" id="senha" placeholder="Senha" size="20"/><br>
+			<label>Tipo Usuário:</label>
+			<select name="tipoUsuario" id="tipoUsuario">
+					<option value="0" selected>Selecione...</option>
+				<% for(TipoUsuario tipo: lista){ %>
+					<option value="<%=tipo.getId()%>"><%=tipo.getDescricao() %></option>
+				<%} %>
+			</select>			
+			<input type="submit" value="Gravar"/>
+		</form>
+	</div>
+	<div>
+		<nav>
+			<ul>
+				<li><a href="menu.jsp">Home</a></li>
+			</ul>
+		</nav>
+	</div>	
+</body>
+</html>
